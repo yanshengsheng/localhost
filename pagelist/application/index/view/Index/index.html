@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script type="text/javascript" src="/public/static/reslog/js/jquery-1.7.2.min.js"></script>
+    <title>首页</title>
+</head>
+<body>
+<h1>列表分页</h1>
+<table style="width:80%;margin:0 auto">
+    <tr>
+        <th style="">id</th>
+        <th>姓名</th>
+        <th>联系方式</th>
+        <th>性别</th>
+    </tr>
+    {foreach name="list" item="vo"}
+    <tr>
+        <td style="text-align:center">{$vo.id}</td>
+        <td style="text-align:center">{$vo.username}</td>
+        <td style="text-align:center">{$vo.famtel}</td>
+        <td style="text-align:center"><a href="{:url('Index/page',['page'=>$vo['id']])}">{$vo.sex}</a></td>
+    </tr>
+    {/foreach}
+</table>
+<div>
+    <div>
+        {if condition="$page eq '1'"}
+        <a href="">上一页</a>
+        {else}
+        <a href="{:url('Index/index',['page'=>$page-1])}">上一页</a>
+        {/if}
+
+    </div>
+    {$page}
+    <div>
+        {if condition="$page eq $pages"}
+        <a href="">下一页</a>
+        {else}
+        <a href="{:url('Index/index',['page'=>$page+1])}">下一页</a>
+        {/if}
+    </div>
+</div>
+</body>
+</html>
