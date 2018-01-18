@@ -1,0 +1,25 @@
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script type="text/javascript" src="__STATIC__js/js.js"></script>
+    <title>首页</title>
+</head>
+<body>
+<form method="post" action="{:url('Index/do_yan')}">
+    <input id="codeInput" type="code" class="codee"  name="code" />
+    <div id="vode">
+        <img id="captchs" src="{:captcha_src()}" alt="captcha" style="cursor:pointer;" />
+    </div>
+    <input type="submit" value="验证">
+</form>
+</body>
+<script type="text/javascript">
+    $("#captchs").click(function(){
+        // $(this).attr("src","/captcha?id="+Math.random());
+        document.getElementById('captchs').src="/captcha?id="+Math.random();
+        //document.getElementById('captchs').src="/captcha?id="+Math.random();
+
+    });
+</script>
+</html>
