@@ -5,6 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-
+    <a href="<?php echo U('Index/up_drop');?>">退出</a>
 </body>
 </html>
