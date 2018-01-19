@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{:url('Index/up_cloose')}" method="post">
+    <input name="teacher" value="1" {if condition="$info.teacher eq 1"} checked {/if} type="checkbox"/>我是老师
+    <input name="student" value="1" {if condition="$info.student eq 1"} checked {/if}  type="checkbox"/>我是学生
+    <input type="submit" name="sub" value="提交"/>
+</form>
+</body>
+</html>
