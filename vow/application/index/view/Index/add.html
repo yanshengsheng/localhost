@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>我要许愿-许愿网</title>
+    <meta name="description" content="许愿网是一个专业在线许愿、在线发祝福、在线祝福、在线发愿望的平台，并为网友提供永久保存许愿服务的许愿网站。愿望不是一个遥不可及的事，只有心中有信念，许愿网相信每个愿望都可以实现。来许网(www.laixu.net)：来这里许愿！" />
+    <meta name="keywords" content="发布愿望,我要许愿,增加愿望,帖愿望,许愿,愿望,许愿网,许愿树,许愿池,许愿瓶,许愿墙,许愿望,发祝福,在线祈福,许愿玻璃瓶,许愿精灵,许愿清单,我要许愿,许愿网站,实现愿望" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="__STATIC__/css/bootstrap.css" />
+    <link rel="stylesheet" href="__STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__STATIC__/css/common.css" />
+    <link rel="stylesheet" href="__STATIC__/layer/skin/default/layer.css" />
+    <link rel="shortcut icon" href="/Public/Common/Images/favicon.ico" />
+    <script type="text/JavaScript" src='__STATIC__/js/jquery.min.js'></script>
+    <script type="text/JavaScript" src='__STATIC__/js/bootstrap.min.js'></script>
+    <script type="text/JavaScript" src='__STATIC__/js/jquery.SuperSlide.2.1.1.js'></script>
+    <script type="text/javascript" src="__STATIC__/js/common.js"></script>
+    <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+    <link rel="stylesheet" href="__STATIC__/css/index.css" />
+    <script type="text/javascript">
+        window.UEDITOR_HOME_URL = '/Data/Ueditor.add/';
+        window.onload = function(){
+            window.UEDITOR_CONFIG.initialFrameHeight = 100;
+            window.UEDITOR_CONFIG.imageUrl = "/Index/Index/upload.html";           //图片上传提交地址
+            window.UEDITOR_CONFIG.imagePath = '/Uploads/';
+            UE.getEditor('content');
+        }
+        $(function(){
+            $('#nav_add').addClass('cur');
+        })
+    </script>
+    <script type="text/javascript" src="__STATIC__/js/ueditor.config.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/js/ueditor.all.js"></script>
+    <script type="text/javascript">
+        function resize_window(){
+            $(".MainBar").width($(window).width()-150);
+        }
+        $(function(){
+            resize_window();
+            $(window).resize(function(){
+                resize_window();
+            })
+            $('#type').change(function(){
+                $('#typetext').text($('#type').val());
+            });
+            $('#content').change(function(){
+                $('#contenttext').text($('#content').val());
+            });
+            $('#fromname').blur(function(){
+                $('#fromtext').text($('#fromname').val());
+            });
+            $('.radio').click(function(){
+                $('#typetext').removeClass('c1 c2 c3 c4 c5 c6 c7');
+                $('#typetext').addClass('c'+$(this).val());
+            });
+        });
+    </script>
+</head>
+<body>
+<link rel="stylesheet" href="__STATIC__/css/index.css" />
+<link rel="stylesheet" href="__STATIC__/css/jquery.mCustomScrollbar.css" />
+<script type="text/javascript">
+    function resize_window(){
+        $(".MainBar").width($(window).width()-150);
+    }
+    $(function(){
+        resize_window();
+        $(window).resize(function(){
+            resize_window();
+        })
+    })
+</script>
+<div class="SideBar">
+    <a href="/" class="h1"  title="许愿网" style="background:#073553 url(__STATIC__/images/57812106b8c1e.png)  no-repeat center center;"><h1 title="许愿网">许愿网</h1></a>
+    <a id="nav_add" href="{:url('Index/add')}" tile="立即许愿">
+        <span class="glyphicon glyphicon-plus"></span>
+    </a>
+    <a id="nav_search" href="/search" title="搜索愿望">
+        <span class="glyphicon glyphicon-search"></span>
+    </a>
+    <a id="nav_user" href="/user.html" title="许愿会员中心">
+        <span class="glyphicon glyphicon-user"></span>
+    </a>
+    <a id="nav_html_1" href="/html/about.html" title="关于许愿网">
+        <span class="glyphicon glyphicon-info-sign"></span>
+    </a>
+    <a id="nav_html_2" href="/html/note.html" title="许愿网建议">
+        <span class="glyphicon glyphicon-comment"></span>
+    </a>
+</div>
+
+<div class="MainBar">
+    <div class="box">
+        <div class="wrap">
+            <script type="text/javascript" src="__STATIC__/js/wish.js"></script>
+            <div class="wishSub" >
+                <div class="left">
+                    <div class="title"><b>我要许愿→</b></div>
+                    <form method="post" id="wishform">
+                        {foreach item='cl' key='key' name='typecolor'}
+                        <label>
+                            <input type="radio" class="radio" name="typecolor" {if condition="$key eq 0"}checked="checked"{/if} value="{$key+1}"/>
+                            <div class="color" style="background-color:{$cl}"></div>
+                        </label>
+                        {/foreach}
+                        <div class="blank"></div>
+                        <select name="type" class="type" id="type">
+                        {foreach item='vo' key='key' name='vowtype'}
+                        <option value="{$vo}">{$vo}</option>
+                        {/foreach}
+                        </select>
+                        <div class="blank"></div>
+                        <textarea class="textarea" name="content" id="content" placeholder="请输入许愿内容"></textarea>
+                        <div class="blank"></div>
+                        <input type="code" id="codes" class="codee"  name="code" />
+                        <div id="newcode"><img id="codeimg" src="{:captcha_src()}" alt="captcha" /></div>                        <div class="blank"></div>
+                        <!--<small id="showmsg"></small>-->
+                        <input type="input" name="member" id="fromname" class="input" value=""  placeholder="请输入许愿人"/>
+                        <div class="blank"></div>
+                        <input type="buttom" id="subbut" class="submit" value="我来许愿 +" onclick="return submitcheck()"/>
+                        <p>
+                            亲，登录后可以在后台查看您的愿望噢！<a href="/User/User/login" title="许愿网登录">许愿网登录>></a><br/>
+                            还没有帐号？<a href="/User/User/reg" title="许愿网注册">立即注册许愿网>></a>
+                        </p>
+                    </form>g
+                </div>
+                <div class="right">
+                    <b id="typetext">求吉祥运气</b>
+                    <div class="addbox">
+                        <p id="contenttext">这里是许愿的内容...</p>
+                        <span>许愿人:<em id="
+        </div>fromtext">小许</em><br/>许愿时间：2017-09-06 10:02:18<br/>未知&nbsp;/&nbsp;未知</span>
+    </div>
+</div>
+</div>
+    </div>
+</div>
+<script type="text/javascript" src="__STATIC__/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script>
+    (function($){
+        $(window).load(function(){
+            $(".wrap").mCustomScrollbar({
+                set_width:false, /*optional element width: boolean, pixels, percentage*/
+                set_height:false, /*optional element height: boolean, pixels, percentage*/
+                horizontalScroll:false, /*scroll horizontally: boolean*/
+                scrollInertia:950, /*scrolling inertia: integer (milliseconds)*/
+                mouseWheel:true, /*mousewheel support: boolean*/
+                mouseWheelPixels:"auto", /*mousewheel pixels amount: integer, "auto"*/
+                autoDraggerLength:true, /*auto-adjust scrollbar dragger length: boolean*/
+                autoHideScrollbar:false, /*auto-hide scrollbar when idle*/
+                scrollButtons:{ /*scroll buttons*/
+                    enable:false, /*scroll buttons support: boolean*/
+                    scrollType:"continuous", /*scroll buttons scrolling type: "continuous", "pixels"*/
+                    scrollSpeed:"auto", /*scroll buttons continuous scrolling speed: integer, "auto"*/
+                    scrollAmount:40 /*scroll buttons pixels scroll amount: integer (pixels)*/
+                },
+                advanced:{
+                    updateOnBrowserResize:true, /*update scrollbars on browser resize (for layouts based on percentages): boolean*/
+                    updateOnContentResize:false, /*auto-update scrollbars on content resize (for dynamic content): boolean*/
+                    autoExpandHorizontalScroll:false, /*auto-expand width for horizontal scrolling: boolean*/
+                    autoScrollOnFocus:true, /*auto-scroll on focused elements: boolean*/
+                    normalizeMouseWheelDelta:false /*normalize mouse-wheel delta (-1/1)*/
+                },
+                contentTouchScroll:true, /*scrolling by touch-swipe content: boolean*/
+                callbacks:{
+                    onScrollStart:function(){}, /*user custom callback function on scroll start event*/
+                    onScroll:function(){}, /*user custom callback function on scroll event*/
+                    onTotalScroll:function(){}, /*user custom callback function on scroll end reached event*/
+                    onTotalScrollBack:function(){}, /*user custom callback function on scroll begin reached event*/
+                    onTotalScrollOffset:0, /*scroll end reached offset: integer (pixels)*/
+                    onTotalScrollBackOffset:0, /*scroll begin reached offset: integer (pixels)*/
+                    whileScrolling:function(){} /*user custom callback function on scrolling event*/
+                },
+                theme:"light" /*"light", "dark", "light-2", "dark-2", "light-thick", "dark-thick", "light-thin", "dark-thin"*/
+            });
+        });
+    })(jQuery);
+</script>
+<!--<script type="text/javascript">-->
+    $('#codes').blur(function(){
+        var Valname = $(this).val();
+        if(Valname=='')
+        {
+            $('#showmsg').html('验证码不能为空');
+            $('#showmsg').css('color','red');
+            $('.submit').attr('disabled',true);
+            return false;
+        }
+        $.ajax({
+            url:"{:url('Index/checkenname')}",
+            type:'post',
+            data:{names:Valname},
+            success:function(data){
+                $('#showmsg').html(data.msg);
+                if(data.status)
+                {
+                    $('#showmsg').css('color','green');
+                    $('.submit').attr('disabled',false)
+                }else{
+                    $('#showmsg').css('color','red');
+                    $('.submit').attr('disabled',true);
+                }
+            }
+        });
+    });
+<!--</script>-->
+<script type="text/javascript">
+    $('#codeimg').click(function(){
+        $(this).attr('src','/captcha?id='+Math.random());
+    });
+    $('#subbut').click(function(){
+        $.ajax({
+            url:"http://www.vow.com/index/index/addlist",
+            type:'POST',
+            data:$('#wishform').serialize(),
+            success:function(result){
+                switch(result.status)
+                {
+                    case 1:
+                        layer.msg(result.msg ,{
+                            offset: 't',
+                            anim: 6
+                        });
+                        location.href="http://www.vow.com/index/index/index";
+                        break;
+                    case 2:
+                        layer.msg(result.msg ,{
+                            offset: 't',
+                            anim: 6
+                        });
+                        break;
+                    case 3:
+                        layer.msg(result.msg ,{
+                            offset: 't',
+                            anim: 6
+                        });
+                        break;
+                }
+            },
+            error:function(result){
+
+            }
+        });
+    });
+</script>
+</body>
+</html>
