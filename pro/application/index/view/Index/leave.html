@@ -1,0 +1,142 @@
+<html>
+<head>
+    <title>
+        请假
+    </title>
+    <link rel="stylesheet" href="__STATIC__/css/index.css" />
+    <script type="text/javascript" src="__STATIC__/js/laydate/laydate.js"></script>
+    <script type="text/javascript" src="__STATIC__/js/Calendar.js"></script>
+    <script type="text/JavaScript" src='__STATIC__/js/jquery.min.js'></script>
+</head>
+<body style="background-color: #fbf9ee">
+
+<form action="{:url('Index/addleave')}" method="post" class="basic-grey ">
+    <h1>请假条
+        <span>请如实填写请假状况</span>
+    </h1>
+    <label>
+        <span style="margin-left: -15px">请假人:</span>
+        <input id='usernmae' onkeyup="this.value=this.value.replace(/^[a-zA-Z0-9_]$/,'');" type="text" name="username" placeholder="你的姓名" />
+        <small id="showmsg"></small>
+    </label>
+
+    <label>
+        <span>你的班级 :</span>
+        <select name="class">
+            <option style="background-color: #fffff" value="Job Inquiry">--请选择--</option>
+            {foreach item='info' name='info'}
+            <option style="background-color: #fffff" value="{$info.class}">{$info.class}</option>
+            {/foreach}
+        </select>
+    </label>
+    <label>
+        <div style="margin-left: 45px; width: 200px">
+            <span>开始时间 <input name="begintime" value='点击选择' type="text" id="control_date" size="10" maxlength="10" onClick="new Calendar().show(this);" readonly="readonly" /></span>
+
+        </div>
+        <div style="margin-left: 45px; width: 200px">
+            <span>结束时间 <input name="overtime" value='点击选择' type="text" id="control_date2" size="10" maxlength="10" onClick="new Calendar().show(this);" readonly="readonly" /></span>
+            <!--<span><input name="" type="button" value="查询" onClick=""/></span>-->
+        </div>
+        <script>
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#test1' //指定元素
+            });
+        </script>
+    </label>
+
+    <label>
+
+        <script>
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#test2' //指定元素
+            });
+        </script>
+    </label>
+    <label>
+        <span>请假原因 :</span>
+        <textarea id="message" maxlength="50" name="cause" placeholder="不要超过50字"></textarea>
+        <br/><small id="length"></small>
+        </label>
+    <label>
+        <span>本人手机号:</span>
+        <input id="telphone" type='text' onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" name="telephone"  />
+    </label>
+    <label>
+        <span>家长手机号:</span>
+        <input id="telphone" type='text' onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" name="familytelephone"  />
+    </label>
+    <label>
+        <span>&nbsp;</span>
+        <input type="submit" class="button" value="提交" />
+    </label>
+</form>
+<script type="text/javascript">
+    laydate.render({
+        elem: '#test1'
+    });
+    //国际版
+    laydate.render({
+        elem: '#test1-1'
+        ,lang: 'en'
+    });
+</script>
+<script type="text/javascript">
+    laydate.render({
+        elem: '#test2'
+    });
+    //国际版
+    laydate.render({
+        elem: '#test1-2'
+        ,lang: 'en'
+    });
+</script>
+<script type="text/javascript">
+    $('#usernmae').blur(function(){
+        var valname=$(this).val();
+        if(valname == "")
+        {
+            $('#showmsg').html('不能为空');
+            $('#showmsg').css('color','red');
+            $('.button').attr('disabled',true);
+            return false;
+        }
+        $.ajax({
+            url:"{:url('Index/uname')}",
+            type:'post',
+            data:{names:valname},
+            success:function(data){
+                if(data.status)
+                {
+                    $('#showmsg').html(data.msg);
+                    $('#showmsg').css('color','green');
+                    $('.botton').attr('disabled',false);
+                }else{
+                    $('#showmsg').html(data.msg);
+                    $('#showmsg').css('color','red');
+                    $('.botton').attr('disabled',true);
+                }
+            },
+            error:function(){
+                alert('fail');
+            },
+        });
+    });
+</script>
+<script type="text/javascript">
+    $('#message').blur(function(){
+        $('#length').html('');
+        var valarea = $(this).val();
+        if(valarea=='')
+        {
+            $('#length').html('请输入');
+            $('#length').css('color','red');
+            $('.botton').attr('disabled',true);
+            return false;
+        }
+    });
+</script>
+</body>
+</html>

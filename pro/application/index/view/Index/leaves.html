@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__STATIC__/js/html5shiv.js"></script>
+    <script type="text/javascript" src="__STATIC__/js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/js/Hui-iconfont/1.0.8/iconfont.min.css" />
+    <!--[if lt IE 9]>
+    <link href="__STATIC__/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="__STATIC__/js/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <style type="text/css">
+        .ui-sortable .panel-header{ cursor:move}
+    </style>
+    <title>请假系统</title>
+    <meta name="keywords" content="关键词,5个左右,单个8汉字以内">
+    <meta name="description" content="网站描述，字数尽量空制在80个汉字，160个字符以内！">
+</head>
+<body>
+    <div style="width:800px; height:700px; background-color: #EE3A8C; margin-left:280px; margin-top:30px;">
+        <div class="text-l" style="margin-left:30px;"><h2>请假条</h2>
+            <span>请如实填写请假情况</span>
+        </div><br/>
+        <hr/>
+        <br/><br/>
+        <label style="margin-left:30px;">
+            <span style="font-size:16px;"><strong>请假人:</strong></span>&nbsp;&nbsp;
+            <input type="text" placeholder="默认尺寸" class="radius size-L" style="width:500px; height:30px">
+        </label><br/><br/>
+        <label style="margin-left:30px;">
+            <span style="font-size:16px;"><strong>所在班级:</strong></span>&nbsp;&nbsp;
+          <select size="1" name="demo1" style="width:130px; height:30px">
+            <option value="" selected>默认select</option>
+            <option value="1">菜单一</option>
+            <option value="2">菜单二</option>
+            <option value="3">菜单三</option>
+          </select>
+        </label><br/><br/>
+        <label style="margin-left:30px;">
+            <span style="font-size:16px;"><strong>开始时间:</strong></span>&nbsp;&nbsp;
+            <input type="text" placeholder="默认尺寸" class="radius size-L" style="width:200px; height:30px">
+        </label><br/><br/>
+        <label style="margin-left:30px;">
+            <span style="font-size:16px;"><strong>结束时间:</strong></span>&nbsp;&nbsp;
+            <input type="text" placeholder="默认尺寸" class="radius size-L" style="width:200px; height:30px">
+        </label><br/><br/>
+        <label style="margin-left:30px;">
+            <span style="font-size:16px;"><strong>请假原因:</strong></span>&nbsp;&nbsp;
+            <textarea id="message" maxlength="50" name="cause" placeholder="不要超过50字" style="width:500px; height:120px"></textarea>
+            <br/><small id="length"></small>
+        </label><br/><br/>
+        <label style="margin-left:30px;">
+            <span style="font-size:16px;"><strong>本人手机号:</strong></span>&nbsp;&nbsp;
+            <input type="text" placeholder="默认尺寸" class="radius size-L" style="width:480px; height:30px">
+        </label><br/><br/>
+        <label style="margin-left:30px;">
+            <span style="font-size:16px;"><strong>家长手机号:</strong></span>&nbsp;&nbsp;
+            <input type="text" placeholder="默认尺寸" class="radius size-L" style="width:480px; height:30px">
+        </label><br/><br/>
+        <label style="margin-left:100px;">
+            <input type="submit" class="btn btn-default radius size-L" value="提交" />
+        </label>
+    </div>
+</body>
+</html>
+<!--H-ui前端框架提供前端技术支持 h-ui.net @2017-01-01 -->

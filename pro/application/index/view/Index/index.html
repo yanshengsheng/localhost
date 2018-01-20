@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>省市区三级联合</title>
+    <script type="text/JavaScript" src='__STATIC__/js/jquery.min.js'></script>
+</head>
+
+<body>
+    <select id="pro">
+        <option>--请选择--</option>
+        {foreach item='pro' name='region'}
+            <option value="{$pro.id}">{$pro.region_name}</option>
+        {/foreach}
+    </select>
+    <select id="city">
+        <option class="del">--请选择--</option>
+    </select>
+    <select id="area">
+        <option>--请选择--</option>
+    </select>
+<script type="text/javascript">
+    $('#pro').change(function(){
+        $('.undel').remove();
+        $('.undels').remove();
+        var province = $(this).val();
+        $.ajax({
+            url:"{:url('Index/city')}",
+            type:'post',
+            data:{rid:province},
+            success:function(data){
+                $(data).each(function(index,val){
+                    var option="<option value='"+val.id+"' class='undel'>"+val.region_name+"</option>";
+                    $('#city').append(option);
+                });
+            },
+            error:function(){
+                alert('fail');
+            }
+        });
+    });
+    $('#city').change(function(){
+        var province = $(this).val();
+        $.ajax({
+            url:"{:url('Index/city')}",
+            type:'post',
+            data:{rid:province},
+            success:function(data){
+                $(data).each(function(index,val){
+                    var option="<option class='undels'>"+val.region_name+"</option>";
+                    $('#area').append(option);
+                });
+            },
+            error:function(){
+                alert('fail');
+            }
+        });
+    });
+</script>
+</body>
+</html>
